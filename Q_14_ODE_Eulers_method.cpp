@@ -1,53 +1,36 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
-class Euler {
-
+class EulersMethod{
     public:
-
-    double function(double x, double y) {
-        return x+y;
-    }
-
-    void solve() {
-        cout << "Initial Condition\n\n" << endl;
-        
-        double x0, y0, xn, n;
-        cout << "Enter x0: ";
+    double x0, y0, h, xn;
+    EulersMethod(){
+        cout << "Enter the initial value of x : ";
         cin >> x0;
-        cout << "Enter y0: ";
+        cout << "Enter the initial value of y : ";
         cin >> y0;
-
-        cout <<"Enter xn: ";
+        cout << "Enter the step size : ";
+        cin >> h;
+        cout << "Enter the value of x for which y is required : ";
         cin >> xn;
-
-        cout << "Enter number of steps: ";
-        cin >> n;
-
-        // step size
-        double h = (xn + x0) / n;
-        double yn;
-        for(int i = 0; i < n; i++) {
-            double slope = function(x0, y0);
-            double yi = y0 + h*slope;
-            cout << "Step " << i+1 << ": value of x0 = " << x0 << "    value of y0 = " << y0 << "    slope = " << slope << "    value of yn = " << yi << endl;
-            y0 = yi;
-            x0 = x0 + h;
-            if(i == n-1) {
-                yn = yi;
-            }
+    }
+    double func(double x, double y){
+        return (x+y);
+    }
+    void solve(){
+        double y = y0;
+        double x = x0;
+        while(x < xn){
+            y = y + h*func(x, y);
+            x = x + h;
         }
-
-        cout << "value of y(" << xn << ") = " << yn << endl;
+        cout << "The value of y at x = " << xn << " is " << y << endl;
     }
 };
 
-int main() {
-
-    Euler euler;
-
-    euler.solve();
+int main(){
+    EulersMethod cls = EulersMethod();
+    cls.solve();
 
     return 0;
 

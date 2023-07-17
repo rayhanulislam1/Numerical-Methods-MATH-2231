@@ -1,55 +1,40 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
-class Simpson {
-
+class SimpsonsOneThirdRule{
     public:
-
-    double function(double x) {
-        return (1 / (1 + pow(x, 2)));
-    }
-
-    void solve() {
-
-        double l, u, n, h;
-
-        cout << "Enter lower limit: ";
-        cin >> l;
-        cout << "Enter upper limit: ";
-        cin >> u;
-
-        cout << "Enter sub-interval: ";
+    int n;
+    double a, b, h, sum = 0.0, x[100], y[100];
+    SimpsonsOneThirdRule(){
+        cout << "Enter the number of data points: ";
         cin >> n;
-
-        // step size 
-        h = (u-l) / n;
-
-        // integration
-        double i = function(l);  // integration -> i;
-
-        for(int j = 1; j < n; j++) {
-            double k = l + j*h;   // k = l + j*h; -> xi = a + i*del(x);
-            if(j%2 == 0) {
-                i = i + 2 * function(k);
-            } else {
-                i = i + 4 * function(k);
+        cout << "Enter the lower limit: ";
+        cin >> a;
+        cout << "Enter the upper limit: ";
+        cin >> b;
+        h = (b-a)/n;
+        cout << "Enter the data points: " << endl;
+        for(int i = 0; i < n+1; i++){
+            cin >> x[i] >> y[i];
+        }
+    }
+    void solve(){
+        for(int i = 1; i < n; i++){
+            if(i%2 == 0){
+                sum += 2*y[i];
+            }
+            else{
+                sum += 4*y[i];
             }
         }
-
-        i = i + function(u);
-        i = i * h/3;
-
-        cout<< endl << "Required value of integration is: " << i << endl << endl;
-
+        sum = (h/3)*(y[0] + y[n]) + h*sum;
+        cout << "The integral is: " << sum << endl;
     }
-        
 };
 
-int main() {
-
-    Simpson simpson;
-    simpson.solve();
+int main(){
+    SimpsonsOneThirdRule cls = SimpsonsOneThirdRule();
+    cls.solve();
 
     return 0;
 

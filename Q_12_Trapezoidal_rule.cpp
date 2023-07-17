@@ -1,45 +1,30 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 class Trapezoidal {
-
     public:
-
-    double function(double x) {
-        return (1 / (1 + pow(x, 2)));
-    }
-
-    void solve() {
-
-        double l, u, n, h;
-
-        cout << "Enter lower limit: ";
-        cin >> l;
-        cout << "Enter upper limit: ";
-        cin >> u;
-
-        cout << "Enter sub-interval: ";
+    int n;
+    double a, b, h, sum = 0.0, x[100], y[100];
+    Trapezoidal(){
+        cout << "Enter the number of data points: ";
         cin >> n;
-
-        // step size 
-        h = (u-l) / n;
-
-        // integration
-        double i = function(l);  // integration -> i;
-
-        for(int j = 1; j < n; j++) {
-            double k = l + j*h;   // k = l + j*h; -> xi = a + i*del(x);
-            i = i + 2 * function(k);
+        cout << "Enter the lower limit: ";
+        cin >> a;
+        cout << "Enter the upper limit: ";
+        cin >> b;
+        h = (b-a)/n;
+        cout << "Enter the data points: " << endl;
+        for(int i = 0; i < n+1; i++){
+            cin >> x[i] >> y[i];
         }
-
-        i = i + function(u);
-        i = i * h/2;
-
-        cout<< endl << "Required value of integration is: " << i;
-
     }
-        
+    void solve(){
+        for(int i = 1; i < n; i++){
+            sum += y[i];
+        }
+        sum = (h/2)*(y[0] + y[n]) + h*sum;
+        cout << "The integral is: " << sum << endl;
+    }
 };
 
 int main() {
@@ -50,3 +35,15 @@ int main() {
     return 0;
 
 }
+/*
+Enter the number of data points: 4
+Enter the lower limit: 0
+Enter the upper limit: 1
+Enter the data points:
+0 0
+0.25 0.7071
+0.5 1
+0.75 0.7071
+1 0
+The integral is: 0.7071
+*/

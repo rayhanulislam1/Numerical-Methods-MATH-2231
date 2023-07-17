@@ -1,50 +1,45 @@
-#include <iostream>
-#include <vector>
-#include <cmath>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    // Define the data points
-    vector<double> x{0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    vector<double> y{1.0, 2.0, 5.0, 10.0, 17.0, 26.0};
-    
-    // Define the degree of the polynomial to fit
-    int degree = 2;
-    
-    // Create the X matrix
-    int num_points = x.size();
-    vector<vector<double>> X(num_points, vector<double>(degree + 1, 1.0));
-    for (int i = 0; i < num_points; i++) {
-        for (int j = 1; j <= degree; j++) {
-            X[i][j] = pow(x[i], j);
+class leastSquareCurveFitting{
+    public:
+    int n;
+    double x[100], y[100];
+    double a0, a1;
+    leastSquareCurveFitting(){
+        cout << "Enter the number of data points : ";
+        cin >> n;
+        cout << "Enter the data points : " << endl;
+        for(int i = 0; i < n; i++){
+            cin >> x[i] >> y[i];
         }
     }
-    
-    // Calculate the coefficients of the polynomial
-    vector<double> X_transpose_times_y(degree + 1, 0.0);
-    vector<vector<double>> X_transpose_times_X(degree + 1, vector<double>(degree + 1, 0.0));
-    for (int i = 0; i < num_points; i++) {
-        for (int j = 0; j <= degree; j++) {
-            X_transpose_times_y[j] += X[i][j] * y[i];
-            for (int k = 0; k <= degree; k++) {
-                X_transpose_times_X[j][k] += X[i][j] * X[i][k];
-            }
+    void solve(){
+        double sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+        for(int i = 0; i < n; i++){
+            sumX += x[i];
+            sumY += y[i];
+            sumXY += x[i]*y[i];
+            sumX2 += x[i]*x[i];
         }
+        a0 = (sumX2*sumY - sumX*sumXY)/(n*sumX2 - sumX*sumX);
+        a1 = (n*sumXY - sumX*sumY)/(n*sumX2 - sumX*sumX);
+        cout << "a0 : " << a0 << ", a1 : " << a1 << endl;
     }
-    vector<double> coefficients(degree + 1, 0.0);
-    for (int i = 0; i <= degree; i++) {
-        for (int j = 0; j <= degree; j++) {
-            coefficients[i] += X_transpose_times_X[i][j] * X_transpose_times_y[j];
-        }
-    }
-    
-    // Output the results
-    cout << "Coefficients: ";
-    for (int i = 0; i <= degree; i++) {
-        cout << coefficients[i] << " ";
-    }
-    cout << endl;
+};
+int main(){
+   leastSquareCurveFitting cls = leastSquareCurveFitting();
+    cls.solve();
     
     return 0;
 }
+/*
+Enter the number of data points : 5
+Enter the data points :
+0 1
+1 2
+2 3
+3 4
+4 5
+a0 : 1, a1 : 1
+*/

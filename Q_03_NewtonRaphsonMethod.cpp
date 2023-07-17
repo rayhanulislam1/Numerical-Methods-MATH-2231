@@ -10,22 +10,24 @@ double df(double x){
 }
 class NewtonRaphson{
     public:
-    double a;
+    double x0;
     NewtonRaphson(){
         srand(time(0));
-        a = rand()%10;
+        x0 = rand()%10;
     }
     void solve(){
         double precision = 0.001;
-        double root = a - (f(a)/df(a));
-        double x = root;
+        double x1;
         while(1){
-            root = root - (f(root)/df(root));
-            cout << "Root : " << root << ", X : " << x << endl;
-            if(abs((root - x)/root) < precision) break;
-            x = root;
+            if(df(x0) == 0){
+                cout << "Division by zero error!" << endl;
+                return;
+            }
+            x1 = x0 - f(x0)/df(x0);
+            if(abs((x1 - x0)/x1) < precision) break;
+            x0 = x1;
         }
-        cout << "Root : " << root << endl;
+        cout << "Root : " << x1 << endl;
     }
 };
 int main(){
@@ -34,3 +36,6 @@ int main(){
 
     return 0;
 }
+/*
+Root : 2.08008
+*/

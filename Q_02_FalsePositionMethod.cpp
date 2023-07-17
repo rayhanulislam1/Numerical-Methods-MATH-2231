@@ -7,19 +7,23 @@ double f(double x){
 }
 class FalsePosition{
     public:
-    void solve(){
-        double a, b;
-        cin >> a >> b;
-        double precision = 0.001;
-        double root = (a*f(b) - b*f(a))/f(b) - f(a);
-        double x = root;
+    double a, b;
+    FalsePosition(){
+        srand(time(0));
+        a = rand()%10;
+        b = rand()%10;
         while(1){
-            if(f(a) * f(b)== 0) break;
-            else if(f(a) * f(b) > 0) a = root;
-            else b = root;
-            root = (a*f(b) - b*f(a))/f(b) - f(a);
-            if(abs((root - x)/root) < precision) break;
-            x = root;
+            if(a != b) break;
+        }
+    }
+    void solve(){
+        double precision = 0.001;
+        double root;
+        while(1){
+            root = (a*f(b) - b*f(a))/(f(b) - f(a));
+            if(f(a)*f(root) < 0) b = root;
+            else a = root;
+            if(abs((b - a)/b) < precision) break;
         }
         cout << "Root : " << root << endl;
     }
@@ -30,3 +34,6 @@ int main(){
 
     return 0;
 }
+/*
+Root : 2.08008
+*/
