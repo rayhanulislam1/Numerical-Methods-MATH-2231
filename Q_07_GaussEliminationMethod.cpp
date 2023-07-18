@@ -52,6 +52,21 @@ int main(){
     return 0;
 }
 /*
+Question: Implement Gauss elimination method.
+We know that,
+x1 = (a11x1 + a12x2 + a13x3 + ... + a1nxn + b1)/a11
+x2 = (a21x1 + a22x2 + a23x3 + ... + a2nxn + b2)/a22
+x3 = (a31x1 + a32x2 + a33x3 + ... + a3nxn + b3)/a33
+...
+xn = (an1x1 + an2x2 + an3x3 + ... + annxn + bn)/ann
+where, a11, a12, a13, a14, ... a1n, b1 are the coefficients of the equations.
+and a21, a22, a23, a24, ... a2n, b2 are the coefficients of the equations.
+and a31, a32, a33, a34, ... a3n, b3 are the coefficients of the equations.
+...
+and an1, an2, an3, an4, ... ann, bn are the coefficients of the equations.
+and x1, x2, x3, x4, ... xn are the values of the variables.
+
+Example:
 2x + y - z = 8
 -3x - y + 2z = -11
 -2x + y + 2z = -3

@@ -39,6 +39,13 @@ int main(){
     return 0;
 }
 /*
+Question: Implement Lagrange interpolation.
+We know that,
+y = y0 + p*(y1-y0) + p*(p-1)*(y2-2*y1+y0)/2! + p*(p-1)*(p-2)*(y3-3*y2+3*y1-y0)/3! + ...
+where, p = (x-x0)/(x1-x0)
+and y0, y1, y2, y3, ... yn are the data points.
+
+Example:
 Enter number of data: 4
 
 Enter data:

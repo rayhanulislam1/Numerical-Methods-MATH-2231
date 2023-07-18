@@ -35,5 +35,10 @@ int main(){
     return 0;
 }
 /*
+Question: Implement false position method.
+We know that,
+x2 = (a*f(b) - b*f(a))/(f(b) - f(a))
+where, x2 is the next approximation, a and b are the current approximations, f(a) and f(b) are the values of the function at a and b respectively.
+Example:
 Root : 2.08008
 */

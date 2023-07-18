@@ -35,5 +35,10 @@ int main(){
     return 0;
 }
 /*
+Question: Implement bisection method.
+We know that,
+x2 = (a + b)/2
+where, x2 is the next approximation, a and b are the current approximations.
+Example:
 Root : 2.08008
 */

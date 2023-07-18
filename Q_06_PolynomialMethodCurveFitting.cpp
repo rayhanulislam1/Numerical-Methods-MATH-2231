@@ -48,6 +48,12 @@ int main(){
     return 0;
 }
 /*
+Question: Implement polynomial curve fitting method.
+We know that,
+y = a0 + a1*x + a2*x^2 + ...
+where, a0, a1, a2, ... are the coefficients of the polynomial.
+
+Example:
 Enter the number of data points : 5
 Enter the data points :
 0 1

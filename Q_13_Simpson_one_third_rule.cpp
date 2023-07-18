@@ -39,3 +39,26 @@ int main(){
     return 0;
 
 }
+/*
+    Ques:
+    You will be given a set of data points and you have to find the integral of the curve using Simpson's 1/3rd rule.
+    ans:
+    We know that,
+    I = (h/3)*(y0 + yn) + h*(y1 + y3 + y5 + ... + yn-1)
+    where, h = (b-a)/n
+    and n is the number of data points.
+    and y0, y1, y2, y3, ... yn are the data points.
+
+    Example:
+    Enter the number of data points: 6
+    Enter the lower limit: 0
+    Enter the upper limit: 1
+    Enter the data points:
+    0 0
+    0.2 0.064
+    0.4 0.128
+    0.6 0.192
+    0.8 0.256
+    1 0.32
+    The integral is: 0.213333
+*/

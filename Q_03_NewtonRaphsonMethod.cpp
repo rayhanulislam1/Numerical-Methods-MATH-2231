@@ -37,5 +37,11 @@ int main(){
     return 0;
 }
 /*
+Question: Implement Newton Raphson method.
+We know that,
+x2 = x1 - f(x1)/f'(x1)
+where, x2 is the next approximation, x1 is the current approximation, f(x1) is the value of the function at x1 and f'(x1) is the derivative of the function at x1.
+
+Example:
 Root : 2.08008
 */

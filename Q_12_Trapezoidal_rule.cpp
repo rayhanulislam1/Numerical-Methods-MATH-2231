@@ -36,6 +36,13 @@ int main() {
 
 }
 /*
+Question: Calculaton of definite integral using trapezoidal rule.
+We know that,
+I = (h/2)*(y0 + yn) + h*(y1 + y2 + y3 + ... + yn-1)
+where, h = (b-a)/n
+and n is the number of data points.
+and y0, y1, y2, y3, ... yn are the data points.
+Example:
 Enter the number of data points: 4
 Enter the lower limit: 0
 Enter the upper limit: 1
